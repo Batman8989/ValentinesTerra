@@ -1,0 +1,307 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Calibri;}{\f1\fnil\fcharset1 Segoe UI Symbol;}}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 <!DOCTYPE html>\par
+<html lang="en">\par
+<head>\par
+  <meta charset="UTF-8" />\par
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />\par
+  <title>Will you be my Valentine?</title>\par
+\par
+  <!-- Confetti library -->\par
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>\par
+\par
+  <style>\par
+    :root \{\par
+      --bg1: #ffd6e7;\par
+      --bg2: #ffeef6;\par
+      --card: #ffffffcc;\par
+      --yes: #ff3b7a;\par
+      --yesHover: #ff1f68;\par
+    \}\par
+\par
+    * \{ box-sizing: border-box; \}\par
+\par
+    body \{\par
+      margin: 0;\par
+      min-height: 100svh;\par
+      display: grid;\par
+      place-items: center;\par
+      background: radial-gradient(circle at top, var(--bg2), var(--bg1));\par
+      font-family: system-ui, sans-serif;\par
+      overflow: hidden;\par
+      padding: 16px;\par
+    \}\par
+\par
+    /* FULL-SCREEN CONFETTI CANVAS */\par
+    #confettiCanvas \{\par
+      position: fixed;\par
+      inset: 0;\par
+      width: 100vw;\par
+      height: 100vh;\par
+      pointer-events: none;\par
+      z-index: 9999;\par
+    \}\par
+\par
+    .card \{\par
+      width: min(720px, 92vw);\par
+      padding: 26px 22px;\par
+      background: var(--card);\par
+      backdrop-filter: blur(10px);\par
+      border-radius: 22px;\par
+      text-align: center;\par
+      box-shadow: 0 18px 60px rgba(0,0,0,.15);\par
+    \}\par
+\par
+    .art \{\par
+      width: min(260px, 80vw);\par
+      margin: 0 auto 10px;\par
+      display: block;\par
+      filter: drop-shadow(0 10px 14px rgba(0,0,0,.12));\par
+    \}\par
+\par
+    h1 \{\par
+      font-size: clamp(26px, 4vw, 44px);\par
+      margin: 12px 0 18px;\par
+    \}\par
+\par
+    .button-zone \{\par
+      position: relative;\par
+      width: min(520px, 92%);\par
+      height: 150px;\par
+      margin: 0 auto;\par
+      touch-action: none;\par
+    \}\par
+\par
+    button \{\par
+      position: absolute;\par
+      top: 50%;\par
+      transform: translateY(-50%);\par
+      padding: 16px 24px;\par
+      font-size: 18px;\par
+      font-weight: 800;\par
+      border-radius: 999px;\par
+      border: none;\par
+      cursor: pointer;\par
+      box-shadow: 0 10px 24px rgba(0,0,0,.14);\par
+      user-select: none;\par
+      -webkit-tap-highlight-color: transparent;\par
+      transition: transform .12s ease, background .12s ease;\par
+    \}\par
+\par
+    #yesBtn \{\par
+      left: 18%;\par
+      background: var(--yes);\par
+      color: #fff;\par
+    \}\par
+    #yesBtn:hover \{ background: var(--yesHover); \}\par
+\par
+    #noBtn \{\par
+      left: 62%;\par
+      background: #e5e7eb;\par
+      color: #111827;\par
+    \}\par
+\par
+    .hint \{\par
+      margin-top: 10px;\par
+      font-size: 13px;\par
+      opacity: .7;\par
+    \}\par
+\par
+    .result \{\par
+      display: none;\par
+      margin-top: 18px;\par
+      animation: pop .35s ease;\par
+    \}\par
+\par
+    .result h2 \{\par
+      font-size: clamp(30px, 4.5vw, 46px);\par
+      margin: 10px 0;\par
+    \}\par
+\par
+    .fireworks \{\par
+      width: min(380px, 90vw);\par
+      margin: 0 auto;\par
+      display: block;\par
+    \}\par
+\par
+    @keyframes pop \{\par
+      from \{ transform: scale(.96); opacity: 0; \}\par
+      to \{ transform: scale(1); opacity: 1; \}\par
+    \}\par
+  </style>\par
+</head>\par
+\par
+<body>\par
+  <canvas id="confettiCanvas"></canvas>\par
+\par
+  <main class="card">\par
+    <!-- ANIMAL WITH HEART -->\par
+    <svg class="art" viewBox="0 0 320 240" xmlns="http://www.w3.org/2000/svg">\par
+      <defs>\par
+        <linearGradient id="fur" x1="0" x2="1">\par
+          <stop offset="0" stop-color="#f7c7a1"/>\par
+          <stop offset="1" stop-color="#f2a97b"/>\par
+        </linearGradient>\par
+        <linearGradient id="heart" x1="0" x2="1">\par
+          <stop offset="0" stop-color="#ff4d7d"/>\par
+          <stop offset="1" stop-color="#ff1f68"/>\par
+        </linearGradient>\par
+      </defs>\par
+\par
+      <path d="M250 50 C250 33 270 25 282 38\par
+               C294 25 314 33 314 50\par
+               C314 78 282 92 282 106\par
+               C282 92 250 78 250 50Z"\par
+            fill="url(#heart)"/>\par
+\par
+      <path d="M90 120 C90 70 140 40 190 60\par
+               C240 40 290 70 290 120\par
+               C290 180 240 210 190 210\par
+               C140 210 90 180 90 120Z"\par
+            fill="url(#fur)"/>\par
+\par
+      <path d="M110 92 L95 55 L140 78 Z" fill="#f2a97b"/>\par
+      <path d="M270 92 L285 55 L240 78 Z" fill="#f2a97b"/>\par
+\par
+      <circle cx="160" cy="130" r="8"/>\par
+      <circle cx="220" cy="130" r="8"/>\par
+\par
+      <path d="M190 144 C186 144 182 148 182 152\par
+               C182 160 190 164 190 170\par
+               C190 164 198 160 198 152\par
+               C198 148 194 144 190 144Z"\par
+            fill="#ff7aa2"/>\par
+    </svg>\par
+\par
+    <h1>terra will you be my valentine?</h1>\par
+\par
+    <section class="button-zone" id="zone">\par
+      <button id="yesBtn">Yes</button>\par
+      <button id="noBtn">No</button>\par
+    </section>\par
+\par
+    <!-- HINT -->\par
+    <div class="hint" id="hint">\ldblquote No\rdblquote  seems a bit shy \f1\u-10179?\u-8696?\f0 </div>\par
+\par
+    <section class="result" id="result">\par
+      <h2>YAY! \f1\u-10180?\u-8311?\f0 </h2>\par
+      <img\par
+        class="fireworks"\par
+        src="https://media.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif"\par
+        alt="Fireworks"\par
+      />\par
+    </section>\par
+  </main>\par
+\par
+  <script>\par
+    const zone = document.getElementById("zone");\par
+    const yesBtn = document.getElementById("yesBtn");\par
+    const noBtn = document.getElementById("noBtn");\par
+    const result = document.getElementById("result");\par
+    const hint = document.getElementById("hint");\par
+\par
+    /* ---------- CONFETTI ---------- */\par
+    const confettiCanvas = document.getElementById("confettiCanvas");\par
+\par
+    function resizeConfettiCanvas() \{\par
+      const dpr = Math.max(1, window.devicePixelRatio || 1);\par
+      confettiCanvas.width = Math.floor(window.innerWidth * dpr);\par
+      confettiCanvas.height = Math.floor(window.innerHeight * dpr);\par
+      confettiCanvas.style.width = "100vw";\par
+      confettiCanvas.style.height = "100vh";\par
+    \}\par
+\par
+    resizeConfettiCanvas();\par
+    window.addEventListener("resize", resizeConfettiCanvas);\par
+    window.addEventListener("orientationchange", () => setTimeout(resizeConfettiCanvas, 150));\par
+\par
+    const confettiInstance = confetti.create(confettiCanvas, \{\par
+      resize: false,\par
+      useWorker: true\par
+    \});\par
+\par
+    function fullScreenConfetti() \{\par
+      const end = Date.now() + 1600;\par
+\par
+      (function frame() \{\par
+        confettiInstance(\{\par
+          particleCount: 12,\par
+          spread: 90,\par
+          startVelocity: 45,\par
+          ticks: 180,\par
+          origin: \{ x: Math.random(), y: Math.random() * 0.3 \}\par
+        \});\par
+        if (Date.now() < end) requestAnimationFrame(frame);\par
+      \})();\par
+\par
+      setTimeout(() => \{\par
+        confettiInstance(\{\par
+          particleCount: 300,\par
+          spread: 140,\par
+          startVelocity: 60,\par
+          ticks: 220,\par
+          origin: \{ x: 0.5, y: 0.55 \}\par
+        \});\par
+      \}, 300);\par
+    \}\par
+\par
+    /* ---------- YES BUTTON GROWS ---------- */\par
+    let yesScale = 1;\par
+    function growYes() \{\par
+      yesScale = Math.min(2.2, yesScale + 0.1);\par
+      yesBtn.style.transform = `translateY(-50%) scale($\{yesScale\})`;\par
+    \}\par
+\par
+    /* ---------- NO BUTTON RUNS AWAY ---------- */\par
+    function clamp(n, min, max) \{\par
+      return Math.max(min, Math.min(max, n));\par
+    \}\par
+\par
+    function moveNo(px, py) \{\par
+      const z = zone.getBoundingClientRect();\par
+      const b = noBtn.getBoundingClientRect();\par
+\par
+      let dx = (b.left + b.width / 2) - px;\par
+      let dy = (b.top + b.height / 2) - py;\par
+      let mag = Math.hypot(dx, dy) || 1;\par
+      dx /= mag;\par
+      dy /= mag;\par
+\par
+      let newLeft = (b.left - z.left) + dx * 150;\par
+      let newTop  = (b.top - z.top) + dy * 150;\par
+\par
+      newLeft = clamp(newLeft, 0, z.width - b.width);\par
+      newTop  = clamp(newTop, 0, z.height - b.height);\par
+\par
+      noBtn.style.left = newLeft + "px";\par
+      noBtn.style.top = newTop + "px";\par
+      noBtn.style.transform = "none";\par
+\par
+      growYes();\par
+    \}\par
+\par
+    zone.addEventListener("pointermove", e => \{\par
+      const b = noBtn.getBoundingClientRect();\par
+      const d = Math.hypot(\par
+        (b.left + b.width / 2) - e.clientX,\par
+        (b.top + b.height / 2) - e.clientY\par
+      );\par
+      if (d < 140) moveNo(e.clientX, e.clientY);\par
+    \});\par
+\par
+    noBtn.addEventListener("click", e => e.preventDefault());\par
+\par
+    /* ---------- YES CLICK ---------- */\par
+    yesBtn.addEventListener("click", () => \{\par
+      zone.style.display = "none";\par
+      hint.style.display = "none";     // HIDE THE HINT\par
+      result.style.display = "block";\par
+      resizeConfettiCanvas();\par
+      fullScreenConfetti();\par
+    \});\par
+  </script>\par
+</body>\par
+</html>\par
+\par
+\par
+}
